@@ -1,0 +1,18 @@
+[package]
+name = "orgtabler"
+version = "0.1.0"
+authors = ["JuanLeon Lahoz <juanleon.lahoz@gmail.com>"]
+edition = "2018"
+description = "Transform csv file into an (emacs) org-mode formatted table"
+documentation = "https://github.com/juan-leon/orgtabler/"
+homepage = "https://github.com/juan-leon/orgtabler/"
+repository = "https://github.com/juan-leon/orgtabler/"
+readme = "README.md"
+keywords = ["emacs", "org-mode", "csv"]
+categories = ["command-line-utilities"]
+license = "MIT"
+
+[dependencies]
+prettytable-rs = "^0.8"
+clap = "3.0.0-beta.2"
+color-eyre = "0.5"

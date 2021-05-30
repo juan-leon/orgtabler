@@ -1,6 +1,6 @@
 [package]
 name = "orgtabler"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["JuanLeon Lahoz <juanleon.lahoz@gmail.com>"]
 edition = "2018"
 description = "Transform csv file into an (emacs) org-mode formatted table"

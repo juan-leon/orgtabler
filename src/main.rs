@@ -1,4 +1,4 @@
-use clap::{App, Arg};
+use clap::{self, App, AppSettings, Arg};
 use prettytable::{format, Table};
 
 fn main() {
@@ -8,6 +8,8 @@ fn main() {
         .expect("Falied installing error handler");
 
     let matches = App::new("Transform csv file into an org-mode formatted table")
+        .version(clap::crate_version!())
+        .setting(AppSettings::ColoredHelp)
         .arg(
             Arg::new("no-header")
                 .short('n')

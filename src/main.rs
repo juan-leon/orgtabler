@@ -1,6 +1,23 @@
-use clap::{self, App, AppSettings, Arg};
+#![warn(clippy::all, clippy::pedantic, clippy::nursery)]
+
+use clap::Parser;
 use prettytable::{format, Cell, Table};
 use regex::Regex;
+
+#[derive(Parser)]
+#[command(author, version, about, long_about = None)]
+struct Opts {
+    /// Asume CSV has no header
+    #[clap(short = 'n', long)]
+    no_header: bool,
+
+    /// Colorize output
+    #[clap(short = 'c', long)]
+    color: bool,
+
+    /// Sets the input file to use
+    filename: String,
+}
 
 fn print(table: &mut Table) {
     let org_format = format::FormatBuilder::new()
@@ -51,36 +68,13 @@ fn main() {
         .install()
         .expect("Falied installing error handler");
 
-    let matches = App::new("Transform csv file into an org-mode formatted table")
-        .version(clap::crate_version!())
-        .setting(AppSettings::ColoredHelp)
-        .arg(
-            Arg::new("no-header")
-                .short('n')
-                .long("no-header")
-                .about("Asume CSV has no header"),
-        )
-        .arg(
-            Arg::new("color")
-                .short('c')
-                .long("color")
-                .about("Colorize output"),
-        )
-        .arg(
-            Arg::new("filename")
-                .about("Sets the input file to use")
-                .required(true)
-                .index(1),
-        )
-        .get_matches();
-
-    match Table::from_csv_file(matches.value_of("filename").unwrap()) {
+    let matches = Opts::parse();
+    match Table::from_csv_file(matches.filename) {
         Ok(mut table) => {
-            let colorize = matches.is_present("color");
-            if !matches.is_present("no-header") {
-                set_title(&mut table, colorize);
+            if !matches.no_header {
+                set_title(&mut table, matches.color);
             }
-            if colorize {
+            if matches.color {
                 recolor(&mut table);
             }
             print(&mut table);

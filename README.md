@@ -1,6 +1,11 @@
 # orgtabler
 
-Tool to transform a csv file into an org-mode formatted table.
+Transform a csv file into an org-mode formatted table.
+
+[![Rust](https://github.com/juan-leon/orgtabler/actions/workflows/test.yml/badge.svg)](https://github.com/juan-leon/orgtabler/actions/workflows/test.yml)
+[![dependency status](https://deps.rs/repo/github/juan-leon/orgtabler/status.svg)](https://deps.rs/repo/github/juan-leon/orgtabler)
+[![Release](https://img.shields.io/github/release/juan-leon/orgtabler.svg)](https://github.com/juan-leon/orgtabler/releases/latest)
+
 
 Emacs already has a function that does that, but I am not happy with its
 performance for big input files (and, because of that, it is capped to 999

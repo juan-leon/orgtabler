@@ -16,4 +16,4 @@ license = "MIT"
 prettytable-rs = "^0"
 clap = { version = "^4", features = ["derive", "cargo"] }
 color-eyre = "^0"
-regex = "^1.8.4"
+regex = "^1.9.4"

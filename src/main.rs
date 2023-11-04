@@ -1,11 +1,20 @@
 #![warn(clippy::all, clippy::pedantic, clippy::nursery)]
 
+use clap::builder::styling::{AnsiColor, Effects, Styles};
 use clap::Parser;
 use prettytable::{format, Cell, Table};
 use regex::Regex;
 
+fn styles() -> Styles {
+    Styles::styled()
+        .header(AnsiColor::Red.on_default() | Effects::BOLD)
+        .usage(AnsiColor::Red.on_default() | Effects::BOLD)
+        .literal(AnsiColor::Blue.on_default() | Effects::BOLD)
+        .placeholder(AnsiColor::Green.on_default())
+}
+
 #[derive(Parser)]
-#[command(author, version, about, long_about = None)]
+#[command(author, version, about, long_about = None, styles = styles())]
 struct Opts {
     /// Asume CSV has no header
     #[clap(short = 'n', long)]

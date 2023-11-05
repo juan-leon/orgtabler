@@ -17,3 +17,5 @@ jobs:
       run: cargo fmt -- --check
     - name: Run clippy
       run: cargo clippy
+    - name: Check for typos
+      uses: crate-ci/typos@master

@@ -16,7 +16,7 @@ fn styles() -> Styles {
 #[derive(Parser)]
 #[command(author, version, about, long_about = None, styles = styles())]
 struct Opts {
-    /// Asume CSV has no header
+    /// Assume CSV has no header
     #[clap(short = 'n', long)]
     no_header: bool,
 
@@ -75,7 +75,7 @@ fn main() {
     color_eyre::config::HookBuilder::default()
         .display_env_section(false)
         .install()
-        .expect("Falied installing error handler");
+        .expect("Failed installing error handler");
 
     let matches = Opts::parse();
     match Table::from_csv_file(matches.filename) {

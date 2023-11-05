@@ -26,7 +26,7 @@ ARGS:
 FLAGS:
     -c, --color        Colorize output
     -h, --help         Prints help information
-    -n, --no-header    Asume CSV has no header
+    -n, --no-header    Assume CSV has no header
     -V, --version      Prints version information
 ```
 
